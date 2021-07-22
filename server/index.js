@@ -1,16 +1,15 @@
-const express = require("express")
+const express = require('express')
+const cors = require('cors')
 const app = express()
-const fileReader = require("./util/fileReader")
+const fileReader = require('./util/fileReader')
 
 app.use(express.json())
+app.use(cors())
 
 const antiqua = fileReader.readFile('./resources/Antiqua.source')
 const solarBuddhica = fileReader.readFile('./resources/SolarBuddhica.source')
 const zerpfy = fileReader.readFile('./resources/Zerpfy.source')
 const vaccinations = fileReader.readFile('./resources/vaccinations.source')
-
-
-
 
 app.get('/', (req, res) => {
   res.send('Hello Wrold!')
@@ -32,7 +31,7 @@ app.get('/api/vaccinations', (req, res) => {
   res.json(vaccinations)
 })
 
-const PORT = 3000
+const PORT = 3001
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`)
 })
