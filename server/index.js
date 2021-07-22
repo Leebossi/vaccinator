@@ -1,8 +1,36 @@
 const express = require("express")
 const app = express()
-
+const fileReader = require("./util/fileReader")
 
 app.use(express.json())
+
+const antiqua = fileReader.readFile('./resources/Antiqua.source')
+const solarBuddhica = fileReader.readFile('./resources/SolarBuddhica.source')
+const zerpfy = fileReader.readFile('./resources/Zerpfy.source')
+const vaccinations = fileReader.readFile('./resources/vaccinations.source')
+
+
+
+
+app.get('/', (req, res) => {
+  res.send('Hello Wrold!')
+})
+
+app.get('/api/antiqua', (req, res) => {
+  res.json(antiqua)
+})
+
+app.get('/api/solarbuddhica', (req, res) => {
+  res.json(solarBuddhica)
+})
+
+app.get('/api/zerpfy', (req, res) => {
+  res.json(zerpfy)
+})
+
+app.get('/api/vaccinations', (req, res) => {
+  res.json(vaccinations)
+})
 
 const PORT = 3000
 app.listen(PORT, () => {
