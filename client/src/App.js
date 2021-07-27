@@ -7,6 +7,9 @@ import {
 
 const App = () => {
   const [vaccinations, setVaccinations] = useState([])
+  const [antiqua, setAntiqua] = useState([])
+  const [solarBuddhica, setSolarBuddhica] = useState([])
+  const [zerpfy, setZerpfy] = useState([])
 
   useEffect(() => {
     axios
@@ -14,8 +17,15 @@ const App = () => {
       .then(response => {
         setVaccinations(response.data)
       })
+
+    axios
+      .get('http://localhost:3001/api/antiqua')
+      .then(response => {
+        setAntiqua(response.data)
+      })
   }, [])
   console.log('render', vaccinations.length, 'vaccinations')
+  console.log('render', antiqua.length, 'antiqua')
 
   const style = {
     padding: 10
@@ -54,7 +64,26 @@ const App = () => {
           </table>
         </Route>
         <Route path="/antiqua">
-          Antiqua
+          <table>
+            <tbody>
+              <tr>
+                <th>id</th>
+                <th>order#</th>
+                <th>contact</th>
+                <th>district</th>
+                <th>arrived</th>
+              </tr>
+              {antiqua.map(a =>
+                <tr key={a.id}>
+                  <td>{a.id}</td>
+                  <td>{a.orderNumber}</td>
+                  <td>{a.responsiblePerson}</td>
+                  <td>{a.healthCareDistrict}</td>
+                  <td>{a.arrived}</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
         </Route>
         <Route path="/solarbuddhica">
           Solar Buddhica
