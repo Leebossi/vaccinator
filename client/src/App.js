@@ -5,6 +5,8 @@ import {
   Switch, Route, Link
 } from 'react-router-dom'
 
+import vaccinationService from './services/vaccinations'
+
 const App = () => {
   const [vaccinations, setVaccinations] = useState([])
   const [antiqua, setAntiqua] = useState([])
@@ -12,10 +14,10 @@ const App = () => {
   const [zerpfy, setZerpfy] = useState([])
 
   useEffect(() => {
-    axios
-      .get('http://localhost:3001/api/vaccinations')
-      .then(response => {
-        setVaccinations(response.data)
+    vaccinationService
+      .getAll()
+      .then(initialVaccinations => {
+        setVaccinations(initialVaccinations)
       })
 
     axios
@@ -64,6 +66,7 @@ const App = () => {
           </table>
         </Route>
         <Route path="/antiqua">
+          <h2>Antiqua</h2>
           <table>
             <tbody>
               <tr>
