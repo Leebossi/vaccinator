@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom'
 
 import vaccinationService from './services/vaccinations'
+import VaccineTable from './components/VaccineTable'
 
 const App = () => {
   const [vaccinations, setVaccinations] = useState([])
@@ -25,9 +26,26 @@ const App = () => {
       .then(response => {
         setAntiqua(response.data)
       })
-  }, [])
-  console.log('render', vaccinations.length, 'vaccinations')
-  console.log('render', antiqua.length, 'antiqua')
+
+    axios
+      .get('http://localhost:3001/api/solarbuddhica')
+      .then(response => {
+        setSolarBuddhica(response.data)
+      })
+
+    axios
+      .get('http://localhost:3001/api/zerpfy')
+      .then(response => {
+        setZerpfy(response.data)
+      })
+
+    console.log('render', vaccinations.length, 'vaccinations')
+    console.log('render', antiqua.length, 'Antiqua')
+    console.log('render', solarBuddhica.length, 'SolarBuddhica')
+    console.log('render', zerpfy.length, 'Zerpfy')
+
+  }, [vaccinations.length])
+
 
   const style = {
     padding: 10
@@ -67,32 +85,15 @@ const App = () => {
         </Route>
         <Route path="/antiqua">
           <h2>Antiqua</h2>
-          <table>
-            <tbody>
-              <tr>
-                <th>id</th>
-                <th>order#</th>
-                <th>contact</th>
-                <th>district</th>
-                <th>arrived</th>
-              </tr>
-              {antiqua.map(a =>
-                <tr key={a.id}>
-                  <td>{a.id}</td>
-                  <td>{a.orderNumber}</td>
-                  <td>{a.responsiblePerson}</td>
-                  <td>{a.healthCareDistrict}</td>
-                  <td>{a.arrived}</td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+          <VaccineTable vaccine={antiqua} />
         </Route>
         <Route path="/solarbuddhica">
-          Solar Buddhica
+          <h2>Solar Buddhica</h2>
+          <VaccineTable vaccine={solarBuddhica} />
         </Route>
         <Route path="/zerpfy">
-          Zerpfy
+          <h2>Zerpfy</h2>
+          <VaccineTable vaccine={zerpfy} />
         </Route>
         <Route path="/">
           <h2>Dis is home</h2>
