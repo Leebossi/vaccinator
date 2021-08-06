@@ -16,4 +16,6 @@ const getZerpfy = () => {
   return request.then(response => response.data)
 }
 
-export default { getAntiqua, getSolarBuddhica, getZerpfy }
+const exportedObject = { getAntiqua, getSolarBuddhica, getZerpfy }
+
+export default exportedObject
