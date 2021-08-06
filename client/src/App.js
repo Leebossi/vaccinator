@@ -6,6 +6,8 @@ import {
 } from 'react-router-dom'
 
 import vaccinationService from './services/vaccinations'
+import vaccineService from './services/vaccine'
+
 import VaccineTable from './components/VaccineTable'
 import VaccinationTable from './components/VaccinationTable'
 
@@ -15,6 +17,8 @@ const App = () => {
   const [solarBuddhica, setSolarBuddhica] = useState([])
   const [zerpfy, setZerpfy] = useState([])
 
+  const totalVaccines = antiqua.length + solarBuddhica.length + zerpfy.length
+
   useEffect(() => {
     vaccinationService
       .getAll()
@@ -22,34 +26,27 @@ const App = () => {
         setVaccinations(initialVaccinations)
       })
 
-    axios
-      .get('http://localhost:3001/api/antiqua')
+    vaccineService
+      .getAntiqua()
       .then(response => {
-        setAntiqua(response.data)
+        setAntiqua(response)
       })
 
-    axios
-      .get('http://localhost:3001/api/solarbuddhica')
+    vaccineService
+      .getSolarBuddhica()
       .then(response => {
-        setSolarBuddhica(response.data)
+        setSolarBuddhica(response)
       })
 
-    axios
-      .get('http://localhost:3001/api/zerpfy')
+    vaccineService
+      .getZerpfy()
       .then(response => {
-        setZerpfy(response.data)
+        setZerpfy(response)
       })
-
-    console.log('render', vaccinations.length, 'vaccinations')
-    console.log('render', antiqua.length, 'Antiqua')
-    console.log('render', solarBuddhica.length, 'SolarBuddhica')
-    console.log('render', zerpfy.length, 'Zerpfy')
-
-  }, [vaccinations.length])
-
+  }, [])
 
   const style = {
-    padding: 10
+    paddingRight: 10
   }
 
   return (
@@ -76,7 +73,14 @@ const App = () => {
           <VaccineTable vaccine={zerpfy} />
         </Route>
         <Route path="/">
-          <h2>Dis is home</h2>
+          <div>
+            <h2>Home</h2>
+            <p>antiqua: {antiqua.length}</p>
+            <p>solarBuddhica: {solarBuddhica.length}</p>
+            <p>zerpfy: {zerpfy.length}</p>
+            <p>total: {totalVaccines}</p>
+            <p>vaccinations: {vaccinations.length}</p>
+          </div>
         </Route>
       </Switch>
     </Router>
