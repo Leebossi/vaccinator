@@ -7,6 +7,7 @@ import {
 
 import vaccinationService from './services/vaccinations'
 import VaccineTable from './components/VaccineTable'
+import VaccinationTable from './components/VaccinationTable'
 
 const App = () => {
   const [vaccinations, setVaccinations] = useState([])
@@ -63,36 +64,15 @@ const App = () => {
 
       <Switch>
         <Route path="/vaccinations">
-          <h2>Vaccinations</h2>
-          <table>
-            <tbody>
-              <tr>
-                <th>ID</th>
-                <th>bottle</th>
-                <th>gender</th>
-                <th>date</th>
-              </tr>
-              {vaccinations.map(vaccination =>
-                <tr key={vaccination['vaccination-id']}>
-                  <td>{vaccination['vaccination-id']}</td>
-                  <td>{vaccination.sourceBottle}</td>
-                  <td>{vaccination.gender}</td>
-                  <td>{vaccination.vaccinationDate}</td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+          <VaccinationTable vaccinations={vaccinations} />
         </Route>
         <Route path="/antiqua">
-          <h2>Antiqua</h2>
           <VaccineTable vaccine={antiqua} />
         </Route>
         <Route path="/solarbuddhica">
-          <h2>Solar Buddhica</h2>
           <VaccineTable vaccine={solarBuddhica} />
         </Route>
         <Route path="/zerpfy">
-          <h2>Zerpfy</h2>
           <VaccineTable vaccine={zerpfy} />
         </Route>
         <Route path="/">
