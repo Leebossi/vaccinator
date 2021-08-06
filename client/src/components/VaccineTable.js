@@ -19,7 +19,7 @@ const VaccineTable = ({ vaccine }) => {
               <td>{v.orderNumber}</td>
               <td>{v.responsiblePerson}</td>
               <td>{v.healthCareDistrict}</td>
-              <td>{v.arrived}</td>
+              <td>{new Date(v.arrived).toLocaleString("fi-FI")}</td>
             </tr>
           )}
           </tbody>
