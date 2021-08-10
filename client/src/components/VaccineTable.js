@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const VaccineTable = ({ data }) => {
+const VaccineTable = ({ data, vaccine }) => {
   const [filter, setFilter] = useState("")
 
   const search = (rows) => {
@@ -15,7 +15,7 @@ const VaccineTable = ({ data }) => {
 
   return (
     <div>
-      <h2>{data[0].vaccine}</h2>
+      <h2>{vaccine}</h2>
       <div>
         <input type="text" value={filter} onChange={(e) => setFilter(e.target.value)}></input>
       </div>

@@ -71,13 +71,13 @@ const App = () => {
           <VaccinationTable vaccinations={vaccinations} />
         </Route>
         <Route path="/antiqua">
-          <VaccineTable data={antiqua} />
+          <VaccineTable data={antiqua} vaccine={'Antiqua'} />
         </Route>
         <Route path="/solarbuddhica">
-          <VaccineTable data={solarBuddhica} />
+          <VaccineTable data={solarBuddhica} vaccine={'SolarBuddhica'} />
         </Route>
         <Route path="/zerpfy">
-          <VaccineTable data={zerpfy} />
+          <VaccineTable data={zerpfy} vaccine={'Zerpfy'} />
         </Route>
         <Route path="/">
           <div>
