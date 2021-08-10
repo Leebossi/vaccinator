@@ -3,6 +3,8 @@ import {
   BrowserRouter as Router,
   Switch, Route, Link
 } from 'react-router-dom'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
 
 import vaccinationService from './services/vaccinations'
 import vaccineService from './services/vaccine'
@@ -16,6 +18,7 @@ const App = () => {
   const [antiqua, setAntiqua] = useState([])
   const [solarBuddhica, setSolarBuddhica] = useState([])
   const [zerpfy, setZerpfy] = useState([])
+  const [selectedDate, setSelectedDate] = useState(null)
 
   const totalVaccines = antiqua.length + solarBuddhica.length + zerpfy.length
 
@@ -45,6 +48,10 @@ const App = () => {
       })
   }, [])
 
+  useEffect(() => {
+    console.log('selected date:', selectedDate)
+  }, [selectedDate])
+
   const style = {
     paddingRight: 10
   }
@@ -64,17 +71,22 @@ const App = () => {
           <VaccinationTable vaccinations={vaccinations} />
         </Route>
         <Route path="/antiqua">
-          <VaccineTable vaccine={antiqua} />
+          <VaccineTable data={antiqua} />
         </Route>
         <Route path="/solarbuddhica">
-          <VaccineTable vaccine={solarBuddhica} />
+          <VaccineTable data={solarBuddhica} />
         </Route>
         <Route path="/zerpfy">
-          <VaccineTable vaccine={zerpfy} />
+          <VaccineTable data={zerpfy} />
         </Route>
         <Route path="/">
           <div>
             <h2>Home</h2>
+            <DatePicker
+              selected={selectedDate}
+              onChange={date => setSelectedDate(date)}
+              dateFormat='dd/MM/yyyy'
+            />
             <p>antiqua: {antiqua.length}</p>
             <p>solarBuddhica: {solarBuddhica.length}</p>
             <p>zerpfy: {zerpfy.length}</p>

@@ -1,9 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const VaccineTable = ({ vaccine }) => {
+const VaccineTable = ({ data }) => {
+  const [filter, setFilter] = useState("")
+
+  const search = (rows) => {
+    const columns = rows[0] && Object.keys(rows[0])
+    return rows.filter((row) =>
+      columns.some(
+        (column) => row[column].toString().toLowerCase().indexOf(filter.toLowerCase()) > -1)
+    )
+  }
+
+  const filteredData = search(data)
+
   return (
     <div>
-      <h2>{vaccine[0].vaccine}</h2>
+      <h2>{data[0].vaccine}</h2>
+      <div>
+        <input type="text" value={filter} onChange={(e) => setFilter(e.target.value)}></input>
+      </div>
       <table>
         <tbody>
           <tr>
@@ -13,16 +28,16 @@ const VaccineTable = ({ vaccine }) => {
             <th>district</th>
             <th>arrived</th>
           </tr>
-          {vaccine.map(v =>
-            <tr key={v.id}>
-              <td>{v.id}</td>
-              <td>{v.orderNumber}</td>
-              <td>{v.responsiblePerson}</td>
-              <td>{v.healthCareDistrict}</td>
-              <td>{new Date(v.arrived).toLocaleString("fi-FI")}</td>
+          {filteredData.map(d =>
+            <tr key={d.id}>
+              <td>{d.id}</td>
+              <td>{d.orderNumber}</td>
+              <td>{d.responsiblePerson}</td>
+              <td>{d.healthCareDistrict}</td>
+              <td>{new Date(d.arrived).toLocaleString("fi-FI")}</td>
             </tr>
           )}
-          </tbody>
+        </tbody>
       </table>
     </div>
   )
