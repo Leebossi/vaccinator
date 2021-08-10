@@ -7,7 +7,7 @@ const readFile = (file) => {
   const rl = readline.createInterface({
     input: fs.createReadStream(file),
     output: process.stdout,
-    console: false
+    terminal: false
   })
 
   rl.on('line', (line) => {
