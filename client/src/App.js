@@ -19,7 +19,7 @@ const App = () => {
   const [antiqua, setAntiqua] = useState([])
   const [solarBuddhica, setSolarBuddhica] = useState([])
   const [zerpfy, setZerpfy] = useState([])
-  const [selectedDate, setSelectedDate] = useState(null)
+  const [selectedDate, setSelectedDate] = useState(new Date())
 
   const data = {vaccinations, antiqua, solarBuddhica, zerpfy}
 
@@ -87,7 +87,7 @@ const App = () => {
           <VaccineTable data={zerpfy} vaccine={'Zerpfy'} />
         </Route>
         <Route path="/">
-          <Display data={data} />
+          <Display data={data} date={selectedDate} />
         </Route>
       </Switch>
     </Router>
