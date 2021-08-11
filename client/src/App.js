@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import { filterByDate } from './util/helper'
 
 import vaccinationService from './services/vaccinations'
 import vaccineService from './services/vaccine'
@@ -74,16 +75,16 @@ const App = () => {
 
       <Switch>
         <Route path="/vaccinations">
-          <VaccinationTable vaccinations={vaccinations} />
+          <VaccinationTable vaccinations={filterByDate(vaccinations, selectedDate)} />
         </Route>
         <Route path="/antiqua">
-          <VaccineTable data={antiqua} vaccine={'Antiqua'} />
+          <VaccineTable data={filterByDate(antiqua, selectedDate)} vaccine={'Antiqua'} />
         </Route>
         <Route path="/solarbuddhica">
-          <VaccineTable data={solarBuddhica} vaccine={'SolarBuddhica'} />
+          <VaccineTable data={filterByDate(solarBuddhica, selectedDate)} vaccine={'SolarBuddhica'} />
         </Route>
         <Route path="/zerpfy">
-          <VaccineTable data={zerpfy} vaccine={'Zerpfy'} />
+          <VaccineTable data={filterByDate(zerpfy, selectedDate)} vaccine={'Zerpfy'} />
         </Route>
         <Route path="/">
           <Display data={data} date={selectedDate} />
