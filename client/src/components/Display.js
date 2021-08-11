@@ -22,7 +22,11 @@ const Display = ({ data, date }) => {
   const antiqua = filterByDate(data.antiqua)
   const zerpfy = filterByDate(data.zerpfy)
   const vaccinations = filterByDate(data.vaccinations)
-  const totalVaccines = antiqua.length + solarBuddhica.length + zerpfy.length
+  let totalVaccines
+  
+  if (antiqua || solarBuddhica || zerpfy) {
+    totalVaccines = antiqua.length + solarBuddhica.length + zerpfy.length
+  }
   
   return (
     <div>

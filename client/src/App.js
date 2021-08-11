@@ -11,7 +11,6 @@ import vaccineService from './services/vaccine'
 
 import VaccineTable from './components/VaccineTable'
 import VaccinationTable from './components/VaccinationTable'
-import isExpired from './util/isExpired'
 import Display from './components/Display'
 
 const App = () => {
