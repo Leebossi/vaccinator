@@ -1,28 +1,17 @@
 import React from 'react'
-import {formatDate} from '../util/helper'
+
+import VaccineStatistics from './VaccineStatistics'
+import {filterByDate} from '../util/helper'
 
 const Display = ({ data, date }) => {
   if (data.vaccinations.length <= 0) {
     return null
   }
   
-  const filterByDate = (data) => {
-    let result
-    if (data.length > 0) {
-      if (Object.keys(data[0])[0] === 'id') {
-        result = data.filter(d => d.arrived.includes(formatDate(date)))
-      } else if (Object.keys(data[0])[0] === 'vaccination-id') {
-        result = data.filter(d => d.vaccinationDate.includes(formatDate(date)))
-      }
-    }
-
-    return result
-  }
-  
-  const solarBuddhica = filterByDate(data.solarBuddhica)
-  const antiqua = filterByDate(data.antiqua)
-  const zerpfy = filterByDate(data.zerpfy)
-  const vaccinations = filterByDate(data.vaccinations)
+  const solarBuddhica = filterByDate(data.solarBuddhica, date)
+  const antiqua = filterByDate(data.antiqua, date)
+  const zerpfy = filterByDate(data.zerpfy, date)
+  const vaccinations = filterByDate(data.vaccinations, date)
   let totalVaccines
 
   if (antiqua || solarBuddhica || zerpfy) {
@@ -33,10 +22,11 @@ const Display = ({ data, date }) => {
     <div>
       <h2>Home</h2>
       <p>{date.toDateString()}</p>
-      <p>antiqua: {antiqua.length}</p>
-      <p>solarBuddhica: {solarBuddhica.length}</p>
-      <p>zerpfy: {zerpfy.length}</p>
-      <p>total: {totalVaccines}</p>
+      <VaccineStatistics vaccine={antiqua} brand={'Antiqua'} />
+      <VaccineStatistics vaccine={solarBuddhica} brand={'SolarBuddhica'} />
+      <VaccineStatistics vaccine={zerpfy} brand={'Zerpfy'} />
+      <h2>Total</h2>
+      <p>total orders arrived: {totalVaccines}</p>
       <p>vaccinations: {vaccinations.length}</p>
     </div>
   )

@@ -10,3 +10,16 @@ export const isExpired = (dateX, dateY, shelfLife) => {
 export const formatDate = (date) => {
   return date.toISOString().split(/[T ]/i)[0]
 }
+
+export const filterByDate = (data, date) => {
+  let result
+  if (data.length > 0) {
+    if (Object.keys(data[0])[0] === 'id') {
+      result = data.filter(d => d.arrived.includes(formatDate(date)))
+    } else if (Object.keys(data[0])[0] === 'vaccination-id') {
+      result = data.filter(d => d.vaccinationDate.includes(formatDate(date)))
+    }
+  }
+
+  return result
+}
