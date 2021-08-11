@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import {formatDate} from '../util/helper'
 
 const Display = ({ data, date }) => {
   if (data.vaccinations.length <= 0) {
@@ -9,9 +10,9 @@ const Display = ({ data, date }) => {
     let result
     if (data.length > 0) {
       if (Object.keys(data[0])[0] === 'id') {
-        result = data.filter(d => d.arrived.includes(date.toISOString().split(/[T ]/i)[0]))
+        result = data.filter(d => d.arrived.includes(formatDate(date)))
       } else if (Object.keys(data[0])[0] === 'vaccination-id') {
-        result = data.filter(d => d.vaccinationDate.includes(date.toISOString().split(/[T ]/i)[0]))
+        result = data.filter(d => d.vaccinationDate.includes(formatDate(date)))
       }
     }
 
@@ -23,7 +24,7 @@ const Display = ({ data, date }) => {
   const zerpfy = filterByDate(data.zerpfy)
   const vaccinations = filterByDate(data.vaccinations)
   let totalVaccines
-  
+
   if (antiqua || solarBuddhica || zerpfy) {
     totalVaccines = antiqua.length + solarBuddhica.length + zerpfy.length
   }
