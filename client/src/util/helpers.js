@@ -26,3 +26,29 @@ export const filterByDate = (data, date) => {
 
   return result
 }
+
+export const getVaccinationsByBottle = (vaccinations, vaccines) => {
+  let vaccinationsByBottle = {
+    antiqua: 0,
+    solarBuddhica: 0,
+    zerpfy: 0
+  }
+  let sourceBottles = []
+
+  for (let i = 0; i < vaccinations.length; i++) {
+    sourceBottles.push(vaccinations[i]['sourceBottle'])
+  }
+  
+  for (let i = 0; i < sourceBottles.length; i++) {
+    const found = vaccines.find(vaccine => vaccine.id === sourceBottles[i])
+    if (found.vaccine === 'Antiqua') {
+      vaccinationsByBottle.antiqua ++
+    } else if (found.vaccine === 'SolarBuddhica') {
+      vaccinationsByBottle.solarBuddhica ++
+    } else if (found.vaccine === 'Zerpfy') {
+      vaccinationsByBottle.zerpfy ++
+    }
+  }
+
+  return vaccinationsByBottle
+}

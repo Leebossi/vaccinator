@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import { filterByDate } from './util/helper'
+import { filterByDate } from './util/helpers'
 
 import vaccinationService from './services/vaccinations'
 import vaccineService from './services/vaccine'

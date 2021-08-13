@@ -1,7 +1,7 @@
 import React from 'react'
 
 import VaccineStatistics from './VaccineStatistics'
-import { filterByDate } from '../util/helper'
+import { filterByDate, getVaccinationsByBottle } from '../util/helpers'
 
 const Display = ({ data, date }) => {
   if (!data.vaccinations || data.vaccinations.length === 0) {
@@ -12,6 +12,8 @@ const Display = ({ data, date }) => {
   const antiqua = filterByDate(data.antiqua, date)
   const zerpfy = filterByDate(data.zerpfy, date)
   const vaccinations = filterByDate(data.vaccinations, date)
+  const vaccines = data.antiqua.concat(data.zerpfy).concat(data.solarBuddhica)
+  const vaccinationsByBottle = getVaccinationsByBottle(vaccinations, vaccines)
   let totalVaccines
 
   if (antiqua || solarBuddhica || zerpfy) {
@@ -29,9 +31,9 @@ const Display = ({ data, date }) => {
   return (
     <div>
       <p>Statistics for {date.toDateString()}</p>
-      <VaccineStatistics vaccine={antiqua} brand={'Antiqua'} />
-      <VaccineStatistics vaccine={solarBuddhica} brand={'SolarBuddhica'} />
-      <VaccineStatistics vaccine={zerpfy} brand={'Zerpfy'} />
+      <VaccineStatistics vaccine={antiqua} brand={'Antiqua'} vaccinations={vaccinationsByBottle.antiqua} />
+      <VaccineStatistics vaccine={solarBuddhica} brand={'SolarBuddhica'} vaccinations={vaccinationsByBottle.solarBuddhica} />
+      <VaccineStatistics vaccine={zerpfy} brand={'Zerpfy'} vaccinations={vaccinationsByBottle.zerpfy} />
       <h2>Total</h2>
       <p>total orders arrived: {totalVaccines}</p>
       <p>vaccinations: {vaccinations.length}</p>
