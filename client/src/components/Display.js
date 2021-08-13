@@ -1,13 +1,13 @@
 import React from 'react'
 
 import VaccineStatistics from './VaccineStatistics'
-import {filterByDate} from '../util/helper'
+import { filterByDate } from '../util/helper'
 
 const Display = ({ data, date }) => {
-  if (data.vaccinations.length <= 0) {
+  if (!data.vaccinations || data.vaccinations.length === 0) {
     return null
   }
-  
+
   const solarBuddhica = filterByDate(data.solarBuddhica, date)
   const antiqua = filterByDate(data.antiqua, date)
   const zerpfy = filterByDate(data.zerpfy, date)
@@ -17,11 +17,18 @@ const Display = ({ data, date }) => {
   if (antiqua || solarBuddhica || zerpfy) {
     totalVaccines = antiqua.length + solarBuddhica.length + zerpfy.length
   }
-  
+
+  if (!date) {
+    return (
+      <div>
+        no data on given date
+      </div>
+    )
+  }
+
   return (
     <div>
-      <h2>Home</h2>
-      <p>{date.toDateString()}</p>
+      <p>Statistics for {date.toDateString()}</p>
       <VaccineStatistics vaccine={antiqua} brand={'Antiqua'} />
       <VaccineStatistics vaccine={solarBuddhica} brand={'SolarBuddhica'} />
       <VaccineStatistics vaccine={zerpfy} brand={'Zerpfy'} />

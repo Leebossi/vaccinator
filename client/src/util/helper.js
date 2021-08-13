@@ -8,6 +8,9 @@ export const isExpired = (dateX, dateY, shelfLife) => {
 
 // returns date in format yyyy-mm-dd
 export const formatDate = (date) => {
+  if (!date) {
+    return null
+  }
   return date.toISOString().split(/[T ]/i)[0]
 }
 

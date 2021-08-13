@@ -4,6 +4,9 @@ const VaccineTable = ({ data, vaccine }) => {
   const [filter, setFilter] = useState("")
 
   const search = (rows) => {
+    if (!rows) {
+      return null
+    }
     const columns = rows[0] && Object.keys(rows[0])
     return rows.filter((row) =>
       columns.some(
@@ -11,7 +14,23 @@ const VaccineTable = ({ data, vaccine }) => {
     )
   }
 
-  const filteredData = search(data)
+  let filteredData = search(data)
+
+  if (!filteredData) {
+    filteredData = []
+  }
+
+  if (!filteredData || filteredData.length === 0) {
+    return (
+      <div>
+        <h2>{vaccine}</h2>
+        <div>
+          <input type="text" value={filter} onChange={(e) => setFilter(e.target.value)}></input>
+        </div>
+        no data on given date
+      </div>
+    )
+  }
 
   return (
     <div>

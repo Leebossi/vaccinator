@@ -1,6 +1,10 @@
 import React from 'react'
 
 const VaccinationTable = ({ vaccinations }) => {
+  if (!vaccinations || vaccinations.length === 0) {
+    return null
+  }
+
   return (
     <div>
       <h2>Vaccinations</h2>
