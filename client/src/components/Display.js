@@ -1,7 +1,7 @@
 import React from 'react'
 
 import VaccineStatistics from './VaccineStatistics'
-import { getTotalVaccinationsToDate, filterByDate, getVaccinationsByBottle } from '../util/helpers'
+import { getTotalVaccinationsToDate, filterByDate, getVaccinationsByBottle, getTotalVaccinesToDate } from '../util/helpers'
 
 const Display = ({ data, date }) => {
   if (!data.vaccinations || data.vaccinations.length === 0) {
@@ -17,6 +17,9 @@ const Display = ({ data, date }) => {
   let totalVaccines
 
   const totalVaccinationsToDate = getTotalVaccinationsToDate(data.vaccinations, date)
+  const totalSolarBuddhicaToDate = getTotalVaccinesToDate(data.solarBuddhica, date)
+  const totalAntiquaToDate = getTotalVaccinesToDate(data.antiqua, date)
+  const totalZerpfyToDate = getTotalVaccinesToDate(data.zerpfy, date)
 
   if (antiqua || solarBuddhica || zerpfy) {
     totalVaccines = antiqua.length + solarBuddhica.length + zerpfy.length
@@ -39,7 +42,10 @@ const Display = ({ data, date }) => {
       <h2>Total</h2>
       <p>total orders arrived: {totalVaccines}</p>
       <p>vaccinations: {vaccinations.length}</p>
-      <p>{totalVaccinationsToDate.length}</p>
+      <p>total vaccinations to date {totalVaccinationsToDate.length}</p>
+      <p>total Antiqua orders to date: {totalAntiquaToDate.length}</p>
+      <p>total SolarBuddhica orders to date: {totalSolarBuddhicaToDate.length}</p>
+      <p>total Zerpfy orders to date: {totalZerpfyToDate.length}</p>
     </div>
   )
 }

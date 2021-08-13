@@ -53,13 +53,21 @@ export const getVaccinationsByBottle = (vaccinations, vaccines) => {
   return vaccinationsByBottle
 }
 
-export const getTotalVaccinationsToDate = (data, date) => {
-  if (!data || !date) {
+export const getTotalVaccinationsToDate = (vaccinations, date) => {
+  if (!vaccinations || !date) {
     return null
   }
   let dateToCompare = new Date(date)
   let result
   dateToCompare.setUTCHours(24, 0, 0, 0)
-  result = data.filter(d => d.vaccinationDate < dateToCompare.toISOString())
+  result = vaccinations.filter(v => v.vaccinationDate < dateToCompare.toISOString())
+  return result
+}
+
+export const getTotalVaccinesToDate = (vaccine, date) => {
+  let dateToCompare = new Date(date)
+  let result
+  dateToCompare.setUTCHours(24, 0, 0, 0)
+  result = vaccine.filter(v => v.arrived < dateToCompare.toISOString())
   return result
 }
