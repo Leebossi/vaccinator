@@ -1,7 +1,7 @@
 import React from 'react'
 
 import VaccineStatistics from './VaccineStatistics'
-import { filterByDate, getVaccinationsByBottle } from '../util/helpers'
+import { getTotalVaccinationsToDate, filterByDate, getVaccinationsByBottle } from '../util/helpers'
 
 const Display = ({ data, date }) => {
   if (!data.vaccinations || data.vaccinations.length === 0) {
@@ -15,6 +15,8 @@ const Display = ({ data, date }) => {
   const vaccines = data.antiqua.concat(data.zerpfy).concat(data.solarBuddhica)
   const vaccinationsByBottle = getVaccinationsByBottle(vaccinations, vaccines)
   let totalVaccines
+
+  const totalVaccinationsToDate = getTotalVaccinationsToDate(data.vaccinations, date)
 
   if (antiqua || solarBuddhica || zerpfy) {
     totalVaccines = antiqua.length + solarBuddhica.length + zerpfy.length
@@ -37,6 +39,7 @@ const Display = ({ data, date }) => {
       <h2>Total</h2>
       <p>total orders arrived: {totalVaccines}</p>
       <p>vaccinations: {vaccinations.length}</p>
+      <p>{totalVaccinationsToDate.length}</p>
     </div>
   )
 }

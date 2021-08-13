@@ -19,9 +19,9 @@ const App = () => {
   const [antiqua, setAntiqua] = useState([])
   const [solarBuddhica, setSolarBuddhica] = useState([])
   const [zerpfy, setZerpfy] = useState([])
-  const [selectedDate, setSelectedDate] = useState(new Date())
+  const [selectedDate, setSelectedDate] = useState(new Date('2021-04-12T11:10:06.473587Z'))
 
-  const data = {vaccinations, antiqua, solarBuddhica, zerpfy}
+  let data = { vaccinations, antiqua, solarBuddhica, zerpfy }
 
   useEffect(() => {
     vaccinationService

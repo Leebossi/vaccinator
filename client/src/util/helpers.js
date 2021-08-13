@@ -38,17 +38,28 @@ export const getVaccinationsByBottle = (vaccinations, vaccines) => {
   for (let i = 0; i < vaccinations.length; i++) {
     sourceBottles.push(vaccinations[i]['sourceBottle'])
   }
-  
+
   for (let i = 0; i < sourceBottles.length; i++) {
     const found = vaccines.find(vaccine => vaccine.id === sourceBottles[i])
     if (found.vaccine === 'Antiqua') {
-      vaccinationsByBottle.antiqua ++
+      vaccinationsByBottle.antiqua++
     } else if (found.vaccine === 'SolarBuddhica') {
-      vaccinationsByBottle.solarBuddhica ++
+      vaccinationsByBottle.solarBuddhica++
     } else if (found.vaccine === 'Zerpfy') {
-      vaccinationsByBottle.zerpfy ++
+      vaccinationsByBottle.zerpfy++
     }
   }
 
   return vaccinationsByBottle
+}
+
+export const getTotalVaccinationsToDate = (data, date) => {
+  if (!data || !date) {
+    return null
+  }
+  let dateToCompare = new Date(date)
+  let result
+  dateToCompare.setUTCHours(24, 0, 0, 0)
+  result = data.filter(d => d.vaccinationDate < dateToCompare.toISOString())
+  return result
 }
