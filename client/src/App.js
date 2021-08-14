@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import './index.css'
 import { filterByDate } from './util/helpers'
 
 import vaccinationService from './services/vaccinations'
@@ -59,37 +60,37 @@ const App = () => {
 
   return (
     <Router>
-      <div>
-        <Link style={style} to="/">home</Link>
-        <Link style={style} to="/vaccinations">vaccinations</Link>
-        <Link style={style} to="/antiqua">Antiqua</Link>
-        <Link style={style} to="/solarbuddhica">Solar Buddhica</Link>
-        <Link style={style} to="/zerpfy">Zerpfy</Link>
+      <div className="navbar">
+        <Link className="nav-item" to="/">home</Link>
+        <Link className="nav-item" to="/vaccinations">vaccinations</Link>
+        <Link className="nav-item" to="/antiqua">Antiqua</Link>
+        <Link className="nav-item" to="/solarbuddhica">Solar Buddhica</Link>
+        <Link className="nav-item" to="/zerpfy">Zerpfy</Link>
+        <DatePicker
+          selected={selectedDate}
+          onChange={date => setSelectedDate(date)}
+          dateFormat='dd/MM/yyyy'
+        />
       </div>
-
-      <DatePicker
-        selected={selectedDate}
-        onChange={date => setSelectedDate(date)}
-        dateFormat='dd/MM/yyyy'
-      />
-
-      <Switch>
-        <Route path="/vaccinations">
-          <VaccinationTable vaccinations={filterByDate(vaccinations, selectedDate)} />
-        </Route>
-        <Route path="/antiqua">
-          <VaccineTable data={filterByDate(antiqua, selectedDate)} vaccine={'Antiqua'} />
-        </Route>
-        <Route path="/solarbuddhica">
-          <VaccineTable data={filterByDate(solarBuddhica, selectedDate)} vaccine={'SolarBuddhica'} />
-        </Route>
-        <Route path="/zerpfy">
-          <VaccineTable data={filterByDate(zerpfy, selectedDate)} vaccine={'Zerpfy'} />
-        </Route>
-        <Route path="/">
-          <Display data={data} date={selectedDate} />
-        </Route>
-      </Switch>
+      <main>
+        <Switch>
+          <Route path="/vaccinations">
+            <VaccinationTable vaccinations={filterByDate(vaccinations, selectedDate)} />
+          </Route>
+          <Route path="/antiqua">
+            <VaccineTable data={filterByDate(antiqua, selectedDate)} vaccine={'Antiqua'} />
+          </Route>
+          <Route path="/solarbuddhica">
+            <VaccineTable data={filterByDate(solarBuddhica, selectedDate)} vaccine={'SolarBuddhica'} />
+          </Route>
+          <Route path="/zerpfy">
+            <VaccineTable data={filterByDate(zerpfy, selectedDate)} vaccine={'Zerpfy'} />
+          </Route>
+          <Route path="/">
+            <Display data={data} date={selectedDate} />
+          </Route>
+        </Switch>
+      </main>
     </Router>
   );
 }

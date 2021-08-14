@@ -1,0 +1,134 @@
+:root {
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  --grey-primary: #1F2226;
+  --grey-secondary: #1A1C21;
+  --grey-light: #65666E;
+  --grey-accent: #2B2C32;
+  --white: #EEEEEE;
+  --blue-light: #61dafb;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  color: var(--white);
+  background-color: var(--grey-primary);
+}
+
+body::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--grey-primary);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--blue-light);
+}
+
+main {
+  margin-left: 11vw;
+  width: 89vw;
+  display: flex;
+}
+
+.navbar {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: 11vw;
+  height: 100vh;
+  background: var(--grey-secondary);
+}
+
+.navbar a {
+  padding: 10px;
+  list-style: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.navbar a:hover {
+  color: var(--blue-light);
+  background: var(--grey-accent);
+}
+
+table {
+  background-color: var(--grey-primary);
+}
+
+td, th {
+  border: 1px solid #2b2b2b;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(odd) {
+  background-color: var(--grey-accent);
+}
+
+input {
+  box-sizing: border-box;
+  color: inherit;
+  padding: 8px;
+  margin: 3px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background-color: var(--grey-accent);
+}
+
+input:hover {
+  margin: 0;
+  border: 3px solid var(--grey-light);
+}
+
+input:focus {
+  margin: 0;
+  border: 3px solid var(--blue-light);
+}
+
+.statistics-card {
+  margin: 1rem;
+  padding: 2rem;
+  background-color: var(--grey-accent);
+  border-radius: 10px;
+}
+
+.statistics-card h2 {
+  color: var(--blue-light);
+}
+
+.react-datepicker{
+  border: 3px solid var(--blue-light);
+  border-radius: 0.3rem;
+}
+
+.react-datepicker div {
+  color: var(--white);
+  background: var(--grey-primary);
+}
+
+.react-datepicker__triangle,
+.react-datepicker__triangle::before,
+.react-datepicker__triangle::after {
+  border-top-color: var(--blue-light);
+  border-bottom-color: var(--blue-light);
+  color: var(--blue-light);
+}
+
+.react-datepicker__day:hover {
+  background: var(--grey-light);
+}
+
+
+.react-datepicker .react-datepicker__navigation-icon {
+  color: var(--blue-light);
+}

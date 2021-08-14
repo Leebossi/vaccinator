@@ -35,8 +35,10 @@ export const getVaccinationsByBottle = (vaccinations, vaccines) => {
   }
   let sourceBottles = []
 
-  for (let i = 0; i < vaccinations.length; i++) {
-    sourceBottles.push(vaccinations[i]['sourceBottle'])
+  if (vaccinations) {
+    for (let i = 0; i < vaccinations.length; i++) {
+      sourceBottles.push(vaccinations[i]['sourceBottle'])
+    }
   }
 
   for (let i = 0; i < sourceBottles.length; i++) {
