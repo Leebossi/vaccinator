@@ -14,14 +14,14 @@ const Display = ({ data, date }) => {
   const vaccinations = filterByDate(data.vaccinations, date)
   const vaccines = data.antiqua.concat(data.zerpfy).concat(data.solarBuddhica)
   const vaccinationsByBottle = getVaccinationsByBottle(vaccinations, vaccines)
-  let totalVaccines
-
   const totalVaccinationsToDate = getTotalVaccinationsToDate(data.vaccinations, date)
   const totalSolarBuddhicaToDate = getTotalVaccinesToDate(data.solarBuddhica, date)
   const totalAntiquaToDate = getTotalVaccinesToDate(data.antiqua, date)
   const totalZerpfyToDate = getTotalVaccinesToDate(data.zerpfy, date)
+  let totalVaccines
 
-  if (antiqua || solarBuddhica || zerpfy) {
+  if (antiqua && solarBuddhica && zerpfy) {
+    console.log(antiqua, solarBuddhica, zerpfy)
     totalVaccines = antiqua.length + solarBuddhica.length + zerpfy.length
   }
 

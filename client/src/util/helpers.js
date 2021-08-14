@@ -41,12 +41,14 @@ export const getVaccinationsByBottle = (vaccinations, vaccines) => {
 
   for (let i = 0; i < sourceBottles.length; i++) {
     const found = vaccines.find(vaccine => vaccine.id === sourceBottles[i])
-    if (found.vaccine === 'Antiqua') {
-      vaccinationsByBottle.antiqua++
-    } else if (found.vaccine === 'SolarBuddhica') {
-      vaccinationsByBottle.solarBuddhica++
-    } else if (found.vaccine === 'Zerpfy') {
-      vaccinationsByBottle.zerpfy++
+    if (found) {
+      if (found.vaccine === 'Antiqua') {
+        vaccinationsByBottle.antiqua++
+      } else if (found.vaccine === 'SolarBuddhica') {
+        vaccinationsByBottle.solarBuddhica++
+      } else if (found.vaccine === 'Zerpfy') {
+        vaccinationsByBottle.zerpfy++
+      }
     }
   }
 

@@ -9,7 +9,7 @@ const VaccineStatistics = ({vaccine, brand, vaccinations}) => {
     return injections
   }
 
-  if (vaccine.length <= 0) {
+  if (!vaccine) {
     return null
   }
 
