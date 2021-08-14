@@ -33,8 +33,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 main {
-  margin-left: 11vw;
-  width: 89vw;
+  margin-left: 12vw;
   display: flex;
 }
 
@@ -57,8 +56,14 @@ main {
 
 .navbar a:hover {
   color: var(--blue-light);
-  background: var(--grey-accent);
+  background: var(--grey-primary);
 }
+
+.navbar .date-info p, span{
+  font-size: 12px;
+  margin: 0;
+  padding-left: 10px;
+} 
 
 table {
   background-color: var(--grey-primary);

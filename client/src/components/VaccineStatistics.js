@@ -18,7 +18,7 @@ const VaccineStatistics = ({vaccine, brand, vaccinations}) => {
       <h2>{brand}</h2>
       <p>orders arrived: {vaccine.length}</p>
       <p>amount of injections in arrived orders: {getInjections(vaccine)}</p>
-      <p>vaccinations: {vaccinations}</p>
+      <p>vaccinations given: {vaccinations}</p>
     </div>
   )
 }

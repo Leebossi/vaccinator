@@ -71,6 +71,10 @@ const App = () => {
           onChange={date => setSelectedDate(date)}
           dateFormat='dd/MM/yyyy'
         />
+        <div className="date-info">
+          <span>showing data for</span>
+          <p>{selectedDate.toDateString()}</p>
+        </div>
       </div>
       <main>
         <Switch>

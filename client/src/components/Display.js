@@ -39,7 +39,6 @@ const Display = ({ data, date }) => {
 
   return (
     <div>
-      <p>Statistics for {date.toDateString()}</p>
       <VaccineStatistics vaccine={antiqua} brand={'Antiqua'} vaccinations={vaccinationsByBottle.antiqua} />
       <VaccineStatistics vaccine={solarBuddhica} brand={'SolarBuddhica'} vaccinations={vaccinationsByBottle.solarBuddhica} />
       <VaccineStatistics vaccine={zerpfy} brand={'Zerpfy'} vaccinations={vaccinationsByBottle.zerpfy} />
