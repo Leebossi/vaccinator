@@ -6,7 +6,7 @@ const VaccinationTable = ({ vaccinations }) => {
   }
 
   return (
-    <div>
+    <div className="table-container">
       <h2>Vaccinations</h2>
       <table>
         <tbody>

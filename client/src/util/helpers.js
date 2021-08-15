@@ -75,3 +75,11 @@ export const getTotalVaccinesToDate = (vaccine, date) => {
   result = vaccine.filter(v => v.arrived < dateToCompare.toISOString())
   return result
 }
+
+export const getInjections = (vaccine) => {
+  let injections = 0
+  for (let i = 0; i < vaccine.length; i++) {
+    injections += vaccine[i].injections  
+  }
+  return injections
+}

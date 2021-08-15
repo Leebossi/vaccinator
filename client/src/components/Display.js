@@ -1,11 +1,13 @@
 import React from 'react'
 
 import VaccineStatistics from './VaccineStatistics'
+import BarChart from './BarChart'
 import {
   getTotalVaccinationsToDate,
   filterByDate,
   getVaccinationsByBottle,
   getTotalVaccinesToDate,
+  getInjections
 } from '../util/helpers'
 
 const Display = ({ data, date }) => {
@@ -19,6 +21,7 @@ const Display = ({ data, date }) => {
   const totalSolarBuddhicaToDate = getTotalVaccinesToDate(data.solarBuddhica, date)
   const totalAntiquaToDate = getTotalVaccinesToDate(data.antiqua, date)
   const totalZerpfyToDate = getTotalVaccinesToDate(data.zerpfy, date)
+  let chartData = {}
   let totalVaccines
 
   if (!data.vaccinations || data.vaccinations.length === 0) {
@@ -27,6 +30,23 @@ const Display = ({ data, date }) => {
 
   if (antiqua && solarBuddhica && zerpfy) {
     totalVaccines = antiqua.length + solarBuddhica.length + zerpfy.length
+    chartData = {
+      antiqua: {
+        orders: antiqua.length,
+        injections: getInjections(antiqua),
+        vaccinations: vaccinationsByBottle.antiqua
+      },
+      solarBuddhica: {
+        orders: solarBuddhica.length,
+        injections: getInjections(solarBuddhica),
+        vaccinations: vaccinationsByBottle.solarBuddhica
+      },
+      zerpfy: {
+        orders: zerpfy.length,
+        injections: getInjections(zerpfy),
+        vaccinations: vaccinationsByBottle.zerpfy
+      }
+    }
   }
 
   if (!date) {
@@ -36,7 +56,7 @@ const Display = ({ data, date }) => {
       </div>
     )
   }
-
+  console.log(chartData)
   return (
     <div className="statistics-container">
       <VaccineStatistics vaccine={antiqua} brand={'Antiqua'} vaccinations={vaccinationsByBottle.antiqua} />
@@ -53,6 +73,7 @@ const Display = ({ data, date }) => {
         <p>total Zerpfy orders to date: {totalZerpfyToDate.length}</p>
         <hr></hr>
       </div>
+      <BarChart chartData={chartData}/>
     </div>
   )
 }

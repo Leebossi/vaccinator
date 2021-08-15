@@ -1,14 +1,7 @@
 import React from 'react'
+import { getInjections } from '../util/helpers'
 
 const VaccineStatistics = ({vaccine, brand, vaccinations}) => {
-  const getInjections = (vaccine) => {
-    let injections = 0
-    for (let i = 0; i < vaccine.length; i++) {
-      injections += vaccine[i].injections  
-    }
-    return injections
-  }
-
   if (!vaccine) {
     return null
   }
