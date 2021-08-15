@@ -22,3 +22,9 @@ The source file has one json item per line.
 
 - install dependencies by running `npm install` on both client and server directories.
 - `npm start` both client and server. Client runs on http://localhost:3000 and the server on port 3001.
+
+## Improvements
+
+- functionality to show expiring bottles and more data about the injections
+- write tests
+- more time more love
