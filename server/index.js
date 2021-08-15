@@ -5,6 +5,7 @@ const fileReader = require('./util/fileReader')
 
 app.use(express.json())
 app.use(cors())
+app.use(express.static('build'))
 
 const antiqua = fileReader.readFile('./resources/Antiqua.source')
 const solarBuddhica = fileReader.readFile('./resources/SolarBuddhica.source')

@@ -56,7 +56,7 @@ const Display = ({ data, date }) => {
       </div>
     )
   }
-  console.log(chartData)
+
   return (
     <div className="statistics-container">
       <VaccineStatistics vaccine={antiqua} brand={'Antiqua'} vaccinations={vaccinationsByBottle.antiqua} />
