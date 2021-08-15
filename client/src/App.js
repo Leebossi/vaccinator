@@ -54,10 +54,6 @@ const App = () => {
     console.log('selected date:', selectedDate)
   }, [selectedDate])
 
-  const style = {
-    paddingRight: 10
-  }
-
   return (
     <Router>
       <div className="navbar">
@@ -76,7 +72,8 @@ const App = () => {
           <p>{selectedDate.toDateString()}</p>
         </div>
       </div>
-      <main>
+
+      <div className="main-container">
         <Switch>
           <Route path="/vaccinations">
             <VaccinationTable vaccinations={filterByDate(vaccinations, selectedDate)} />
@@ -94,7 +91,7 @@ const App = () => {
             <Display data={data} date={selectedDate} />
           </Route>
         </Switch>
-      </main>
+      </div>
     </Router>
   );
 }

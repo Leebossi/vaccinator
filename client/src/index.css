@@ -32,9 +32,8 @@ body::-webkit-scrollbar-thumb {
   background: var(--blue-light);
 }
 
-main {
-  margin-left: 12vw;
-  display: flex;
+h2 {
+  color: var(--blue-light);
 }
 
 .navbar {
@@ -100,15 +99,29 @@ input:focus {
   border: 3px solid var(--blue-light);
 }
 
+.main-container {
+  margin-left: 11vw;
+}
+
+.statistics-container {
+  width: 89vw;
+  display: flex;
+}
+
 .statistics-card {
-  margin: 1rem;
+  margin-left: 1rem;
+  margin-top: 1rem;
   padding: 2rem;
   background-color: var(--grey-accent);
   border-radius: 10px;
 }
 
-.statistics-card h2 {
-  color: var(--blue-light);
+.statistics-card hr {
+  border: 1px solid var(--blue-light);
+}
+
+.table-container {
+  margin-left: 1rem;
 }
 
 .react-datepicker{

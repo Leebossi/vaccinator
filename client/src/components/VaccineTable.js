@@ -22,21 +22,21 @@ const VaccineTable = ({ data, vaccine }) => {
 
   if (!filteredData || filteredData.length === 0) {
     return (
-      <div>
+      <div className="table-container">
         <h2>{vaccine}</h2>
         <div>
           <input type="text" value={filter} onChange={(e) => setFilter(e.target.value)}></input>
         </div>
-        no data on given date
+        no data to display
       </div>
     )
   }
 
   return (
-    <div>
+    <div className="table-container">
       <h2>{vaccine}</h2>
       <div>
-        <input type="text" value={filter} onChange={(e) => setFilter(e.target.value)}></input>
+        <input type="text" value={filter} onChange={(e) => setFilter(e.target.value)} placeholder="search"></input>
       </div>
       <table>
         <tbody>
