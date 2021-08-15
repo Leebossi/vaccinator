@@ -1,8 +1,10 @@
-# vaccinator
+# Vaccinator
 
 live version on Heroku: https://hidden-bastion-27554.herokuapp.com/
 
-## exercise
+## The exercise
+
+https://github.com/solita/vaccine-exercise-2021
 
 THL has ordered us to create a vaccination database which contains information about vaccine orders and vaccinations.
 
@@ -16,7 +18,7 @@ Injections must be used in 30 days after the arrival of the bottle.
 
 The source file has one json item per line.
 
-## how to run locally
+## How to run locally
 
 - install dependencies by running `npm install` on both client and server directories.
 - `npm start` both client and server. Client runs on http://localhost:3000 and the server on port 3001.
