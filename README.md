@@ -16,7 +16,7 @@ Injections must be used in 30 days after the arrival of the bottle.
 
 The source file has one json item per line.
 
-## how to run
+## how to run locally
 
-`cd client && npm install && cd ../server && npm install`
-`npm start` both client and server. Client runs on http://localhost:300 and the server on port 3001.
+- install dependencies by running `npm install` on both client and server directories.
+- `npm start` both client and server. Client runs on http://localhost:3000 and the server on port 3001.
