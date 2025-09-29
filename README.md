@@ -1,7 +1,5 @@
 # Vaccinator
 
-live version on Heroku: https://hidden-bastion-27554.herokuapp.com/
-
 ## The exercise
 
 https://github.com/solita/vaccine-exercise-2021
